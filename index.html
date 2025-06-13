@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Planner</h1>
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button role="tab" id="tab-home" aria-selected="true" aria-controls="home" class="tab active">Home</button>
+        <button role="tab" id="tab-goals" aria-selected="false" aria-controls="goals" class="tab">Monthly goals</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" role="tabpanel" aria-labelledby="tab-home">
+        <div class="nav">
+          <button class="nav-btn" id="prev-day" aria-label="Previous day">&lsaquo;</button>
+          <div class="nav-title">
+            <h2 id="date-title"></h2>
+            <button class="link" id="today-btn">Today</button>
+          </div>
+          <button class="nav-btn" id="next-day" aria-label="Next day">&rsaquo;</button>
+        </div>
+
+        <div class="card">
+          <h3>Daily Tasks</h3>
+          <div class="progress" aria-hidden="true"><div id="progress-bar"></div></div>
+          <p class="muted" id="progress-text"></p>
+          <ul class="list" id="task-list"></ul>
+          <div class="fab-row"><button class="fab" id="add-task" aria-label="Add a task">+</button></div>
+        </div>
+
+        <div class="card goals-card">
+          <h3>Goals for <span id="home-month"></span></h3>
+          <ul class="list" id="home-goals"></ul>
+        </div>
+      </section>
+
+      
+
+      <section id="goals" role="tabpanel" aria-labelledby="tab-goals" hidden>
+        <div class="nav">
+          <button class="nav-btn" id="prev-month" aria-label="Previous month">&lsaquo;</button>
+          <div class="nav-title">
+            <h2 id="month-title"></h2>
+            <button class="link" id="this-month-btn">This month</button>
+          </div>
+          <button class="nav-btn" id="next-month" aria-label="Next month">&rsaquo;</button>
+        </div>
+
+        <div class="card">
+          <h3>Monthly Goals</h3>
+          <ul class="list" id="goal-list"></ul>
+          <div class="fab-row"><button class="fab" id="add-goal" aria-label="Add a goal">+</button></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+ 
+
+  <dialog id="task-dialog" aria-labelledby="task-dialog-title">
+    <form id="task-form" autocomplete="off">
+      <h2 id="task-dialog-title">New task</h2>
+      <input id="task-title" maxlength="80" required placeholder="e.g. Revise chapter 4">
+      <div class="row">
+        <div>
+          <label for="task-date">Date</label>
+          <input id="task-date" type="date" required>
+        </div>
+        <div>
+          <label for="task-time">Time</label>
+          <input id="task-time" type="time">
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close>Cancel</button>
+        <button type="submit" class="btn">Add task</button>
+      </div>
+    </form>
+  </dialog>
+
+
+
+  
+  <dialog id="goal-dialog" aria-labelledby="goal-dialog-title">
+    <form id="goal-form" autocomplete="off">
+      <h2 id="goal-dialog-title">New goal</h2>
+      <label for="goal-title">Goal for <span id="goal-dialog-month"></span></label>
+      <input id="goal-title" maxlength="80" required placeholder="e.g. Attempt 5 mock tests">
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close>Cancel</button>
+        <button type="submit" class="btn">Add goal</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
